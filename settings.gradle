@@ -1,0 +1,27 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "ImCrazyAboutToDo"
+include ':app'
+include ':feature-todo'
+include ':feature-profile'
+include ':feature-result'
+include ':core-database'
+include ':core-network'
+include ':core-common'
+include ':core-ui'
+include ':core-navigation'
+include ':core-design'
+include ':feature-mac-address'
+include ':core-workmanager'
