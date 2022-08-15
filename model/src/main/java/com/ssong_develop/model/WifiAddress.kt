@@ -1,6 +1,6 @@
 package com.ssong_develop.model
 
-data class MacAddress(
-    val macAddress: String,
+data class WifiAddress(
+    val wifiAddress: String,
     val createdAt: String
 )
