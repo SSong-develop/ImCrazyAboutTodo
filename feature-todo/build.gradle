@@ -39,8 +39,8 @@ android {
 
 dependencies {
     implementation(project(":core-navigation"))
-    implementation(project(":core-database"))
     implementation(project(":core-data"))
+    implementation(project(":model"))
 
     // compose
     implementation 'androidx.core:core-ktx:1.8.0'
@@ -48,6 +48,10 @@ dependencies {
     implementation "androidx.compose.material:material:1.2.1"
     implementation "androidx.compose.ui:ui-tooling-preview:1.2.0"
     implementation 'androidx.activity:activity-compose:1.5.1'
+    // 이녀석하고
+    implementation "androidx.navigation:navigation-compose:2.5.1"
+    // 이녀석을 추가해주니까 안나긴 하네... 왜인지는 모르곘음
+    implementation "androidx.fragment:fragment-ktx:1.5.2"
 
     // hilt
     implementation "com.google.dagger:hilt-android:2.43.2"

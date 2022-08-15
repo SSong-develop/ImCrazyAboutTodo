@@ -17,5 +17,8 @@ interface RepositoryModule {
     fun bindProfileOfflineRepository(profileOfflineRepository: ProfileOfflineRepository): ProfileRepository
 
     @Binds
-    fun bindResultOfflineRepository(resultOfflineRepository: ResultOfflineRepository): ResultOfflineRepository
+    fun bindResultOfflineRepository(resultOfflineRepository: ResultOfflineRepository): ResultRepository
+
+    @Binds
+    fun bindWifiAddressOfflineRepository(wifiOfflineRepository: WifiOfflineRepository): WifiAddressRepository
 }
