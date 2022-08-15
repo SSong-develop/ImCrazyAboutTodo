@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wifi_connect_channel_name">와이파이 연결</string>
+    <string name="wifi_connect_channel_description">와이파이가 연결 됨을 알려주는 알림</string>
+    <string name="wifi_connect_channel_id">wifi_connect_channel_id</string>
+</resources>

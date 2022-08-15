@@ -6,7 +6,7 @@
         <service
             android:name=".WifiConnectService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="false" />
     </application>
 
 </manifest>

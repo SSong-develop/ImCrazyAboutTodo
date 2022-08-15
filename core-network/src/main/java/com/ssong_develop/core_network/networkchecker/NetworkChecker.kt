@@ -5,12 +5,16 @@ import android.net.ConnectivityManager
 import android.net.LinkProperties
 import android.net.Network
 import android.net.NetworkCapabilities
+import android.net.wifi.WifiInfo
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.core.view.ContentInfoCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
+import java.net.Inet4Address
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
@@ -26,22 +30,27 @@ class NetworkChecker @Inject constructor(
 
         val networkCallbackImpl = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
-                trySend(NetworkStatus.OnAvailable(network))
+                super.onAvailable(network)
+                /*trySend(NetworkStatus.OnAvailable(network))*/
             }
 
             override fun onLosing(network: Network, maxMsToLive: Int) {
-                trySend(NetworkStatus.OnLosing(network,maxMsToLive))
+                super.onLosing(network, maxMsToLive)
+                /*trySend(NetworkStatus.OnLosing(network,maxMsToLive))*/
             }
 
             override fun onLost(network: Network) {
+                super.onLost(network)
                 trySend(NetworkStatus.OnLost(network))
             }
 
             override fun onUnavailable() {
-                trySend(NetworkStatus.OnUnAvailable)
+                super.onUnavailable()
+                /*trySend(NetworkStatus.OnUnAvailable)*/
             }
 
             /** no - option **/
+            @RequiresApi(Build.VERSION_CODES.Q)
             override fun onCapabilitiesChanged(
                 network: Network,
                 networkCapabilities: NetworkCapabilities
@@ -52,6 +61,7 @@ class NetworkChecker @Inject constructor(
             /** no - option **/
             override fun onLinkPropertiesChanged(network: Network, linkProperties: LinkProperties) {
                 super.onLinkPropertiesChanged(network, linkProperties)
+                trySend(NetworkStatus.OnLinkPropertiesChanged(network,linkProperties))
             }
 
             /** no - option **/
