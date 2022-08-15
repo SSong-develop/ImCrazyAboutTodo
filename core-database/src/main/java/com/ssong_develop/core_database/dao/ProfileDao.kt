@@ -2,6 +2,7 @@ package com.ssong_develop.core_database.dao
 
 import androidx.room.*
 import com.ssong_develop.core_database.entity.ProfileEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProfileDao {
@@ -10,9 +11,8 @@ interface ProfileDao {
     fun insertProfile(profileEntity: ProfileEntity)
 
     @Query("SELECT * FROM profile where id = :profileId")
-    fun getProfile(profileId: String)
+    fun getProfile(profileId: String) : Flow<ProfileEntity>
 
-    // FIXME ssong-develop 에러가 날 수 있어요요
     @Delete
-    fun deleteProfile()
+    fun deleteProfile(profileEntity: ProfileEntity)
 }

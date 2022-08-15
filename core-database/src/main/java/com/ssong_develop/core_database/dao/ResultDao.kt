@@ -2,6 +2,7 @@ package com.ssong_develop.core_database.dao
 
 import androidx.room.*
 import com.ssong_develop.core_database.entity.ResultEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ResultDao {
@@ -9,9 +10,8 @@ interface ResultDao {
     fun insertResult(resultEntity: ResultEntity)
 
     @Query("SELECT * FROM result where id = :resultId")
-    fun getResult(resultId: String)
+    fun getResult(resultId: String) : Flow<ResultEntity>
 
-    // FIXME ssong-develop 에러가 날 수 있어요요
     @Delete
-    fun deleteResult()
+    fun deleteResult(resultEntity: ResultEntity)
 }

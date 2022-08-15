@@ -1,9 +1,14 @@
 package com.ssong_develop.core_database.di
 
 import com.ssong_develop.core_database.database.AppDatabase
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object DaoModule {
 
     @Provides

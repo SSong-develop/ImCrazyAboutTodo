@@ -17,12 +17,14 @@
             <option value="$PROJECT_DIR$/core-design" />
             <option value="$PROJECT_DIR$/core-navigation" />
             <option value="$PROJECT_DIR$/core-network" />
+            <option value="$PROJECT_DIR$/core-notification" />
             <option value="$PROJECT_DIR$/core-ui" />
             <option value="$PROJECT_DIR$/core-workmanager" />
             <option value="$PROJECT_DIR$/feature-mac-address" />
             <option value="$PROJECT_DIR$/feature-profile" />
             <option value="$PROJECT_DIR$/feature-result" />
             <option value="$PROJECT_DIR$/feature-todo" />
+            <option value="$PROJECT_DIR$/feature-wificonnect" />
           </set>
         </option>
       </GradleProjectSettings>
