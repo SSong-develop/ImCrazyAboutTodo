@@ -10,8 +10,14 @@ interface ResultDao {
     fun insertResult(resultEntity: ResultEntity)
 
     @Query("SELECT * FROM result where id = :resultId")
-    fun getResult(resultId: String) : Flow<ResultEntity>
+    fun getResult(resultId: String): Flow<ResultEntity>
+
+    @Query("SELECT * FROM result")
+    fun getResults(): Flow<List<ResultEntity>>
 
     @Delete
     fun deleteResult(resultEntity: ResultEntity)
+
+    @Update
+    fun updateResult(resultEntity: ResultEntity)
 }

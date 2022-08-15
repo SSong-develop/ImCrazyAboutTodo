@@ -13,6 +13,9 @@ interface TodoDao {
     @Query("SELECT * FROM todo where id = :todoId")
     fun getTodo(todoId: String) : Flow<TodoEntity>
 
+    @Query("SELECT * FROM todo")
+    fun getTodos(): Flow<List<TodoEntity>>
+
     @Delete
     fun deleteTodo(todoEntity: TodoEntity)
 

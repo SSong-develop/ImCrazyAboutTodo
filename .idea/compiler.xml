@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="ImCrazyAboutToDo.app" target="11" />
+      <module name="ImCrazyAboutToDo.core-common" target="11" />
+      <module name="ImCrazyAboutToDo.core-data" target="11" />
+      <module name="ImCrazyAboutToDo.core-database" target="11" />
+      <module name="ImCrazyAboutToDo.core-design" target="11" />
+      <module name="ImCrazyAboutToDo.core-navigation" target="11" />
+      <module name="ImCrazyAboutToDo.core-network" target="11" />
+      <module name="ImCrazyAboutToDo.core-notification" target="11" />
+      <module name="ImCrazyAboutToDo.core-ui" target="11" />
+      <module name="ImCrazyAboutToDo.core-workmanager" target="11" />
+      <module name="ImCrazyAboutToDo.feature-mac-address" target="11" />
+      <module name="ImCrazyAboutToDo.feature-profile" target="11" />
+      <module name="ImCrazyAboutToDo.feature-result" target="11" />
+      <module name="ImCrazyAboutToDo.feature-todo" target="11" />
+      <module name="ImCrazyAboutToDo.feature-wificonnect" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

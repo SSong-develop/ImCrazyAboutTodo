@@ -23,15 +23,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
 dependencies {
+    implementation(project(":core-common"))
+    implementation(project(":model"))
 
     implementation 'androidx.core:core-ktx:1.8.0'
 
@@ -45,6 +47,9 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.3"
     implementation "androidx.room:room-runtime:2.4.3"
     kapt "androidx.room:room-compiler:2.4.3"
+
+    // coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3"
 }
 
 dependencies {
