@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -31,7 +32,12 @@ fun NotificationManager.sendWifiConnectNotification(
     context: Context,
     messageBody: String
 ) {
-    val contentIntent = Intent(Intent.ACTION_MAIN)
+    // 안되넹;;;
+    val componentName = ComponentName(context,"com.ssong_develop.app.MainActivity")
+
+    val contentIntent = Intent().apply {
+        component = componentName
+    }
 
     val contentPendingIntent = PendingIntent.getActivity(
         context,
