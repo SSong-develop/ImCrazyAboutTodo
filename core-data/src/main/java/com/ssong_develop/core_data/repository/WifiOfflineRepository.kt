@@ -11,10 +11,16 @@ import javax.inject.Inject
 class WifiOfflineRepository @Inject constructor(
     private val wifiAddressDao: WifiAddressDao
 ) : WifiAddressRepository {
-    override fun getWifiAddressStream(): Flow<WifiAddress> =
-        wifiAddressDao.getWifiAddress().map { entity -> entity.asExternalModel() }
+    override fun getWifiAddressStream(): Flow<WifiAddress?> {
+        val wifiAddressFlow = wifiAddressDao.getWifiAddress()
+        return wifiAddressFlow.map { entity ->
+            entity?.asExternalModel()
+        }
+    }
 
-    override fun insertWifiAddress(wifiAddress: WifiAddress) = wifiAddressDao.insertWifiAddress(wifiAddress.asEntityModel())
+    override suspend fun insertWifiAddress(wifiAddress: WifiAddress) =
+        wifiAddressDao.insertWifiAddress(wifiAddress.asEntityModel())
 
-    override fun deleteWifiAddress(wifiAddress: WifiAddress) = wifiAddressDao.deleteWifiAddress(wifiAddress.asEntityModel())
+    override suspend fun deleteWifiAddress(wifiAddress: WifiAddress) =
+        wifiAddressDao.deleteWifiAddress(wifiAddress.asEntityModel())
 }

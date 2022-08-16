@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.Flow
 interface WifiAddressDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertWifiAddress(WIfiAddressEntity : WifiAddressEntity)
+    suspend fun insertWifiAddress(WIfiAddressEntity : WifiAddressEntity)
 
     @Query("SELECT * FROM wifi_address")
-    fun getWifiAddress() : Flow<WifiAddressEntity>
+    fun getWifiAddress() : Flow<WifiAddressEntity?>
 
     @Delete
-    fun deleteWifiAddress(WIfiAddressEntity: WifiAddressEntity)
+    suspend fun deleteWifiAddress(WIfiAddressEntity: WifiAddressEntity)
 }

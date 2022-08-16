@@ -1,6 +1,7 @@
 package com.ssong_develop.feature_mac_address
 
-import android.util.Log
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -14,14 +15,17 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ssong_develop.model.WifiAddress
+import java.sql.Time
+import java.time.LocalDateTime
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun InputMacAddressScreen(
+fun WifiAddressScreen(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-    inputMacAddressViewModel: InputMacAddressViewModel = hiltViewModel()
+    wifiAddressViewModel: WifiAddressViewModel = hiltViewModel()
 ) {
-    var text by remember { mutableStateOf("") }
+    var wifiAddress by remember { mutableStateOf("") }
     val annotatedString = buildAnnotatedString {
         withStyle(style = SpanStyle(Color.LightGray)) {
             append("와이파이 Mac 주소를 모른다면, 현재 연결되어 있는 와이파이 설정에서 고급 설정을 확인합니다.\n")
@@ -53,9 +57,9 @@ fun InputMacAddressScreen(
                     modifier = modifier
                         .padding(padding)
                         .padding(top = 24.dp),
-                    value = text,
+                    value = wifiAddress,
                     onValueChange = { inputValue ->
-                        text = inputValue
+                        wifiAddress = inputValue
                     },
                     label = { Text("Wifi Mac Address") }
                 )
@@ -71,10 +75,13 @@ fun InputMacAddressScreen(
 
                 Button(
                     onClick = {
-                        onClick()
+                        wifiAddressViewModel.saveWifiAddress(WifiAddress(
+                            wifiAddress,
+                            LocalDateTime.now().format(dateTimeFormatter)
+                        ))
                     },
                     modifier = modifier.fillMaxWidth(),
-                    enabled = true,
+                    enabled = wifiAddress.isNotEmpty(),
                     shape = MaterialTheme.shapes.large,
                     content = {
                         Text("test Button")

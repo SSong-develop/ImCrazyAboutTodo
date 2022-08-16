@@ -39,8 +39,9 @@ android {
 
 dependencies {
 
-    implementation(project(":core-database"))
     implementation(project(":core-navigation"))
+    implementation(project(":core-data"))
+    implementation(project(":model"))
 
     // compose
     implementation 'androidx.core:core-ktx:1.8.0'

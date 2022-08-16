@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ImCrazyAboutToDo</string>
+    <string name="title_activity_wifi_address">WifiAddressActivity</string>
 </resources>

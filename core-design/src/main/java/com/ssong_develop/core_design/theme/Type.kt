@@ -1,4 +1,4 @@
-package com.ssong_develop.imcrazyabouttodo.ui.theme
+package com.ssong_develop.core_design.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
