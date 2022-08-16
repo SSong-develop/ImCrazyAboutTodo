@@ -32,11 +32,12 @@ android {
 }
 
 dependencies {
-
     implementation(project(":core-notification"))
     implementation(project(":core-network"))
     implementation(project(":core-workmanager"))
     implementation(project(":core-common"))
+    implementation(project(":core-data"))
+    implementation(project(":model"))
 
     // coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3"

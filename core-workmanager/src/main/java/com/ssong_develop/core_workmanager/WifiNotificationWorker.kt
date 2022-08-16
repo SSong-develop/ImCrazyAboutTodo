@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.work.CoroutineWorker
-import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 
 class WifiNotificationWorker(
@@ -15,8 +14,8 @@ class WifiNotificationWorker(
 
     @RequiresApi(Build.VERSION_CODES.M)
     override suspend fun doWork(): Result {
-        val notificationManager = context.getSystemService(NotificationManager::class.java) as NotificationManager
-
+        val notificationManager =
+            context.getSystemService(NotificationManager::class.java) as NotificationManager
         return Result.success()
     }
 }

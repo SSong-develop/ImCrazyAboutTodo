@@ -7,6 +7,7 @@ import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 
@@ -28,10 +29,9 @@ fun NotificationManager.createWifiConnectNotificationChannel(context: Context) {
 
 fun NotificationManager.sendWifiConnectNotification(
     context: Context,
-    kClass : Class<*>,
     messageBody: String
 ) {
-    val contentIntent = Intent(context,kClass)
+    val contentIntent = Intent(Intent.ACTION_MAIN)
 
     val contentPendingIntent = PendingIntent.getActivity(
         context,
@@ -51,6 +51,7 @@ fun NotificationManager.sendWifiConnectNotification(
         .setContentTitle("등록된 wifi가 연결되었습니다.")
         .setContentText(messageBody)
         .setContentIntent(contentPendingIntent)
+        .setSmallIcon(R.drawable.ic_baseline_bug_report_24)
         .setAutoCancel(true)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
