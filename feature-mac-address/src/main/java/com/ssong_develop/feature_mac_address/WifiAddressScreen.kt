@@ -41,7 +41,7 @@ fun WifiAddressScreen(
             TopAppBar(
                 modifier = modifier,
                 content = {
-                    Text("Test AppBar")
+                    Text("회원가입")
                 }
             )
         },
@@ -61,7 +61,7 @@ fun WifiAddressScreen(
                     onValueChange = { inputValue ->
                         wifiAddress = inputValue
                     },
-                    label = { Text("Wifi Mac Address") }
+                    label = { Text("Wifi 아이피 주소") }
                 )
 
                 Text(
@@ -84,7 +84,7 @@ fun WifiAddressScreen(
                     enabled = wifiAddress.isNotEmpty(),
                     shape = MaterialTheme.shapes.large,
                     content = {
-                        Text("test Button")
+                        Text("저장")
                     }
                 )
             }

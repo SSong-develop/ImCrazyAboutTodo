@@ -46,5 +46,5 @@ class IcatAppState {
 
 @Stable
 enum class IcatScreenState {
-    UNABLE_WIFI_ADDRESS, ENABLE_WIFI_ADDRESS, ERROR
+    UNABLE_WIFI_ADDRESS, ENABLE_WIFI_ADDRESS, ERROR, SPLASH
 }

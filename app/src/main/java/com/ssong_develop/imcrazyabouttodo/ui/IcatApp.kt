@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -29,7 +30,7 @@ fun IcatApp(
 ) {
     ImCrazyAboutToDoTheme {
         // A surface container using the 'background' color from the theme
-        val icatScreenState by mainViewModel.isRegisterWifiAddress.collectAsState(initial = UNABLE_WIFI_ADDRESS)
+        val icatScreenState by mainViewModel.isRegisterWifiAddress.collectAsState(initial = SPLASH)
         val navController = rememberNavController()
 
         Surface(
@@ -37,10 +38,14 @@ fun IcatApp(
             color = MaterialTheme.colors.background
         ) {
             when (icatScreenState) {
-                UNABLE_WIFI_ADDRESS, ERROR -> {
-                    WifiAddressScreen(
-                        onClick = { /** No - options? **/ }
-                    )
+                SPLASH -> {
+                    Text("스플래쉬 화면입니다.")
+                }
+                UNABLE_WIFI_ADDRESS -> {
+                    WifiAddressScreen()
+                }
+                ERROR -> {
+                    Text("에러 화면입니다.")
                 }
                 ENABLE_WIFI_ADDRESS -> {
                     Scaffold(
