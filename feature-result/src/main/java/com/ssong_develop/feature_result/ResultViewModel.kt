@@ -10,4 +10,6 @@ class ResultViewModel @Inject constructor(
     private val resultRepository: ResultRepository
 ) : ViewModel() {
 
+    val results = resultRepository.getResultsStream()
+
 }
