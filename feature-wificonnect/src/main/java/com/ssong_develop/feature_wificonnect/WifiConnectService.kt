@@ -77,8 +77,6 @@ class WifiConnectService : Service() {
                             wifiAddressRepository.getWifiAddressStream().first()?.wifiAddress ?: "".also {
                                 // 포트 번호를 제거해야하는데 일단
                             }
-                        Log.d("ssong-develop1","${connectedWifiAddress}")
-                        Log.d("ssong-develop2","${userWifiAddress}")
                         if (connectedWifiAddress == "${userWifiAddress}/24") {
                             notificationManager.sendWifiConnectNotification(
                                 this@WifiConnectService,

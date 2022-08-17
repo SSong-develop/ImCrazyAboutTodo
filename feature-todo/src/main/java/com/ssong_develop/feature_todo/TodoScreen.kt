@@ -1,5 +1,6 @@
 package com.ssong_develop.feature_todo
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -34,7 +35,11 @@ fun TodoScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { },
+                onClick = {
+                    if(selectedPosition != -1) {
+                        Log.d("ssong-develop","${todos[selectedPosition]}")
+                    }
+                },
                 elevation = FloatingActionButtonDefaults.elevation(8.dp),
                 content = {
                     Icon(
