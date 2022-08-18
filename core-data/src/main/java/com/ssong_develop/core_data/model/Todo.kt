@@ -7,5 +7,6 @@ fun Todo.asEntityModel() = TodoEntity(
     id = id,
     title = title,
     description = description,
-    createdAt = createdAt
+    createdAt = createdAt,
+    deadline = deadline
 )

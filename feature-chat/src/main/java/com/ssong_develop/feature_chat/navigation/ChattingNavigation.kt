@@ -8,7 +8,3 @@ object ChattingDestination : IcatNavigationDestination {
     override val route: String = "chatting_route"
     override val destination: String = "chatting_destination"
 }
-
-fun NavGraphBuilder.profileGraph() {
-
-}

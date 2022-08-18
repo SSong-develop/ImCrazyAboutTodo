@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ssong_develop.core_camera.ui.CameraPreview
 import com.ssong_develop.model.Todo
 
 @Composable
@@ -75,15 +76,16 @@ fun EmptyTodoContent(
     modifier: Modifier = Modifier,
     padding: PaddingValues
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(padding),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text("Todo를 등록해주세요.")
-    }
+//    Column(
+//        modifier = modifier
+//            .fillMaxSize()
+//            .padding(padding),
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        verticalArrangement = Arrangement.Center
+//    ) {
+//        Text("Todo를 등록해주세요.")
+//    }
+    CameraPreview()
 }
 
 @Composable

@@ -19,12 +19,6 @@ class ToDoViewModel @Inject constructor(
     val todos = todoRepository.getTodosStream()
 
     val fakeItemList = flowOf(
-        listOf<Todo>(
-            Todo("1", "example1", "ex", "123123"),
-            Todo("2", "example2", "ex", "123123"),
-            Todo("3", "example3", "ex", "123123"),
-            Todo("4", "example4", "ex", "123123"),
-            Todo("5", "example5", "ex", "123123")
-        )
+        listOf<Todo>()
     )
 }

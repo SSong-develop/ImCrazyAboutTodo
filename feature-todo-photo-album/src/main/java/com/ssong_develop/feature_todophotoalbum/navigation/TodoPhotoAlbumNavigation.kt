@@ -1,4 +1,4 @@
-package com.ssong_develop.`feature_todo-photo-album`.navigation
+package com.ssong_develop.feature_todophotoalbum.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable

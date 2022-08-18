@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ChattingRepository {
 
-    fun getChatStream(id: String) : Flow<Chat>
+    fun getChatStream() : Flow<Chat>
 
     fun insertChat(chat: Chat)
 

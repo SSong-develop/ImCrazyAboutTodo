@@ -18,7 +18,7 @@ import com.ssong_develop.core_database.entity.TodoEntity
         TodoPhotoEntity::class,
         ChatEntity::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = true
 )
 

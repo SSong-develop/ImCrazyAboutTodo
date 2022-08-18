@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="ImCrazyAboutToDo.app" target="11" />
+      <module name="ImCrazyAboutToDo.core-camera" target="11" />
       <module name="ImCrazyAboutToDo.core-common" target="11" />
       <module name="ImCrazyAboutToDo.core-data" target="11" />
       <module name="ImCrazyAboutToDo.core-database" target="11" />

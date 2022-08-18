@@ -11,7 +11,7 @@ import javax.inject.Inject
 class ChattingOfflineRepository @Inject constructor(
     private val chatDao: ChatDao
 ) : ChattingRepository {
-    override fun getChatStream(id: String): Flow<Chat> = chatDao.getChats(id).map { entity -> entity.asExternalModel() }
+    override fun getChatStream(): Flow<Chat> = chatDao.getChats().map { entity -> entity.asExternalModel() }
 
     override fun insertChat(chat: Chat) = chatDao.insertChat(chat.asEntityModel())
 

@@ -1,4 +1,4 @@
-package com.ssong_develop.`feature_todo-photo-album`
+package com.ssong_develop.feature_todophotoalbum
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.ssong_develop.`feature_todo-photo-album`.TodoPhotoAlbumViewModel
 
 @Composable
 fun TodoPhotoAlbumScreen(

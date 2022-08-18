@@ -6,6 +6,5 @@ import com.ssong_develop.model.Chat
 fun Chat.asEntityModel() = ChatEntity(
     id = id,
     message = message,
-    description = description,
     createdAt = createdAt
 )

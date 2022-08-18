@@ -1,4 +1,4 @@
-package com.ssong_develop.`feature_todo-photo-album`
+package com.ssong_develop.feature_todophotoalbum
 
 import androidx.lifecycle.ViewModel
 import com.ssong_develop.core_data.repository.TodoPhotoRepository

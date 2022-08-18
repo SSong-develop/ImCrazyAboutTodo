@@ -7,8 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.ssong_develop.feature_chat.ChattingScreen
 import com.ssong_develop.feature_chat.navigation.ChattingDestination
-import com.ssong_develop.`feature_todo-photo-album`.TodoPhotoAlbumScreen
-import com.ssong_develop.`feature_todo-photo-album`.navigation.TodoPhotoAlbumDestination
+import com.ssong_develop.feature_todophotoalbum.TodoPhotoAlbumScreen
+import com.ssong_develop.feature_todophotoalbum.navigation.TodoPhotoAlbumDestination
 import com.ssong_develop.feature_todo.TodoScreen
 import com.ssong_develop.feature_todo.navigation.TodoDestination
 

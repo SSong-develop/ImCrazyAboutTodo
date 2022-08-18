@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.ssong_develop.core_design.R
 import com.ssong_develop.feature_chat.navigation.ChattingDestination
-import com.ssong_develop.`feature_todo-photo-album`.navigation.TodoPhotoAlbumDestination
+import com.ssong_develop.feature_todophotoalbum.navigation.TodoPhotoAlbumDestination
 import com.ssong_develop.feature_todo.navigation.TodoDestination
 import com.ssong_develop.imcrazyabouttodo.navigation.TopLevelDestination
 
