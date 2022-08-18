@@ -5,10 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.ssong_develop.feature_profile.ProfileScreen
-import com.ssong_develop.feature_profile.navigation.ProfileDestination
-import com.ssong_develop.feature_result.ResultScreen
-import com.ssong_develop.feature_result.navigation.ResultDestination
+import com.ssong_develop.feature_chat.ChattingScreen
+import com.ssong_develop.feature_chat.navigation.ChattingDestination
+import com.ssong_develop.`feature_todo-photo-album`.TodoPhotoAlbumScreen
+import com.ssong_develop.`feature_todo-photo-album`.navigation.TodoPhotoAlbumDestination
 import com.ssong_develop.feature_todo.TodoScreen
 import com.ssong_develop.feature_todo.navigation.TodoDestination
 
@@ -26,11 +26,11 @@ fun IcatNavHost(
         composable(route = TodoDestination.route) {
             TodoScreen()
         }
-        composable(route = ProfileDestination.route) {
-            ProfileScreen()
+        composable(route = ChattingDestination.route) {
+            ChattingScreen()
         }
-        composable(route = ResultDestination.route) {
-            ResultScreen()
+        composable(route = TodoPhotoAlbumDestination.route) {
+            TodoPhotoAlbumScreen()
         }
     }
 }

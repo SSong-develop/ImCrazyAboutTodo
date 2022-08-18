@@ -6,8 +6,8 @@ import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.ssong_develop.core_design.R
-import com.ssong_develop.feature_profile.navigation.ProfileDestination
-import com.ssong_develop.feature_result.navigation.ResultDestination
+import com.ssong_develop.feature_chat.navigation.ChattingDestination
+import com.ssong_develop.`feature_todo-photo-album`.navigation.TodoPhotoAlbumDestination
 import com.ssong_develop.feature_todo.navigation.TodoDestination
 import com.ssong_develop.imcrazyabouttodo.navigation.TopLevelDestination
 
@@ -30,14 +30,14 @@ class IcatAppState {
             iconTextId = com.ssong_develop.feature_todo.R.string.todo_icon_text_id
         ),
         TopLevelDestination(
-            route = ProfileDestination.route,
-            destination = ProfileDestination.destination,
+            route = ChattingDestination.route,
+            destination = ChattingDestination.destination,
             icon = R.drawable.ic_profile,
             iconTextId = com.ssong_develop.feature_profile.R.string.profile_icon_text_id
         ),
         TopLevelDestination(
-            route = ResultDestination.route,
-            destination = ResultDestination.destination,
+            route = TodoPhotoAlbumDestination.route,
+            destination = TodoPhotoAlbumDestination.destination,
             icon = R.drawable.ic_result,
             iconTextId = com.ssong_develop.feature_result.R.string.result_icon_text_id
         )

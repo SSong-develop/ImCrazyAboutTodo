@@ -51,8 +51,6 @@ dependencies {
 
     implementation(project(":feature-mac-address"))
     implementation(project(":feature-todo"))
-    implementation(project(":feature-result"))
-    implementation(project(":feature-profile"))
     implementation(project(":feature-wificonnect"))
     implementation(project(":core-ui"))
     implementation(project(":core-common"))
@@ -88,6 +86,8 @@ dependencies {
 
 // Unit Test Dependencies
 dependencies {
+    implementation implementation(project(':feature-chat',))
+    implementation implementation(project(':feature-todo-photo-album',))
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

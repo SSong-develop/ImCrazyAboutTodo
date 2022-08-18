@@ -5,20 +5,21 @@ import androidx.room.PrimaryKey
 import com.ssong_develop.model.Todo
 import java.util.*
 
-// fixme ssong-develop 엔티티 요소들은 다시 생각
 @Entity(tableName = "todo")
 data class TodoEntity(
     @PrimaryKey
     val id: String = UUID.randomUUID().toString(),
-    val todoTitle: String,
-    val todoSubTitle: String,
+    val title: String,
+    val description: String,
     // LocalDateTime
-    val createdAt: String
+    val createdAt: String,
+    val deadline: Int
 )
 
 fun TodoEntity.asExternalModel(): Todo = Todo(
     id = id,
-    todoTitle = todoTitle,
-    todoSubTitle = todoSubTitle,
-    createdAt = createdAt
+    title = title,
+    description = description,
+    createdAt = createdAt,
+    deadline = deadline
 )

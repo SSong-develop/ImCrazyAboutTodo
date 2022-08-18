@@ -12,10 +12,10 @@
       <module name="ImCrazyAboutToDo.core-notification" target="11" />
       <module name="ImCrazyAboutToDo.core-ui" target="11" />
       <module name="ImCrazyAboutToDo.core-workmanager" target="11" />
+      <module name="ImCrazyAboutToDo.feature-chat" target="11" />
       <module name="ImCrazyAboutToDo.feature-mac-address" target="11" />
-      <module name="ImCrazyAboutToDo.feature-profile" target="11" />
-      <module name="ImCrazyAboutToDo.feature-result" target="11" />
       <module name="ImCrazyAboutToDo.feature-todo" target="11" />
+      <module name="ImCrazyAboutToDo.feature-todo-photo-album" target="11" />
       <module name="ImCrazyAboutToDo.feature-wificonnect" target="11" />
     </bytecodeTargetLevel>
   </component>

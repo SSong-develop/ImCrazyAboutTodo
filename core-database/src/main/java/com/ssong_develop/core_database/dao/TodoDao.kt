@@ -1,7 +1,6 @@
 package com.ssong_develop.core_database.dao
 
 import androidx.room.*
-import com.ssong_develop.core_database.entity.ResultEntity
 import com.ssong_develop.core_database.entity.TodoEntity
 import kotlinx.coroutines.flow.Flow
 

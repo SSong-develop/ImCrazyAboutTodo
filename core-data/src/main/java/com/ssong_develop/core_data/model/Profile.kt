@@ -1,11 +1,11 @@
 package com.ssong_develop.core_data.model
 
-import com.ssong_develop.core_database.entity.ProfileEntity
-import com.ssong_develop.model.Profile
+import com.ssong_develop.core_database.entity.ChatEntity
+import com.ssong_develop.model.Chat
 
-fun Profile.asEntityModel() = ProfileEntity(
+fun Chat.asEntityModel() = ChatEntity(
     id = id,
-    name = name,
+    message = message,
     description = description,
-    createAt = createAt
+    createdAt = createdAt
 )

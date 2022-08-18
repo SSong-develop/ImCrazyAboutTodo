@@ -14,10 +14,10 @@ interface RepositoryModule {
     fun bindTodoOfflineRepository(todoOfflineRepository: TodoOfflineRepository): TodoRepository
 
     @Binds
-    fun bindProfileOfflineRepository(profileOfflineRepository: ProfileOfflineRepository): ProfileRepository
+    fun bindProfileOfflineRepository(profileOfflineRepository: ChattingOfflineRepository): ChattingRepository
 
     @Binds
-    fun bindResultOfflineRepository(resultOfflineRepository: ResultOfflineRepository): ResultRepository
+    fun bindResultOfflineRepository(resultOfflineRepository: TodoPhotoOfflineRepository): TodoPhotoRepository
 
     @Binds
     fun bindWifiAddressOfflineRepository(wifiOfflineRepository: WifiOfflineRepository): WifiAddressRepository

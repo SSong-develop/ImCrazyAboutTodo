@@ -5,7 +5,7 @@ import com.ssong_develop.model.Todo
 
 fun Todo.asEntityModel() = TodoEntity(
     id = id,
-    todoTitle = todoTitle,
-    todoSubTitle = todoSubTitle,
+    title = title,
+    description = description,
     createdAt = createdAt
 )
