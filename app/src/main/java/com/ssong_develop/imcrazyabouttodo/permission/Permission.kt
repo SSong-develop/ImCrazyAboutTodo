@@ -5,9 +5,11 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
 
+// TODO : 내용은 좀 더 채워서, 뭐..어차피 카메라만 있으면 되긴 합니다.
 @ExperimentalPermissionsApi
 @Composable
 fun Permission(
@@ -28,7 +30,6 @@ fun Permission(
             )
         }
     }
-
 }
 
 @Composable
