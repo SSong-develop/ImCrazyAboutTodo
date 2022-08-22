@@ -76,16 +76,16 @@ fun EmptyTodoContent(
     modifier: Modifier = Modifier,
     padding: PaddingValues
 ) {
-//    Column(
-//        modifier = modifier
-//            .fillMaxSize()
-//            .padding(padding),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Center
-//    ) {
-//        Text("Todo를 등록해주세요.")
-//    }
-    CameraPreview()
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(padding),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("Todo를 등록해주세요.")
+    }
+//    CameraPreview()
 }
 
 @Composable
