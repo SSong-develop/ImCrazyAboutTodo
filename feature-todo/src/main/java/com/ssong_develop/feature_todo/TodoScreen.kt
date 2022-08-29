@@ -1,8 +1,5 @@
 package com.ssong_develop.feature_todo
 
-import android.net.Uri
-import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
@@ -12,14 +9,10 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.unit.dp
-import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.rememberImagePainter
-import com.ssong_develop.core_camera.ui.CameraCapture
-import com.ssong_develop.core_camera.ui.CameraPreview
+import com.ssong_develop.feature_todo.ui.TodoFloatingButton
+import com.ssong_develop.feature_todo.ui.TodoTopBar
 import com.ssong_develop.model.Todo
 
 @Composable
@@ -37,24 +30,14 @@ fun TodoScreen(
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopAppBar() {
-                Text("할 일")
-            }
+            TodoTopBar(
+                modifier = modifier
+            )
         },
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    if (selectedPosition != -1) {
-                        Log.d("ssong-develop", "${todos[selectedPosition]}")
-                    }
-                },
-                elevation = FloatingActionButtonDefaults.elevation(8.dp),
-                content = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_trash_can),
-                        contentDescription = ""
-                    )
-                }
+            TodoFloatingButton(
+                selectedPosition = selectedPosition,
+                todos = todos
             )
         },
         content = { paddingValues ->
@@ -82,41 +65,16 @@ fun EmptyTodoContent(
     modifier: Modifier = Modifier,
     padding: PaddingValues
 ) {
-//    Column(
-//        modifier = modifier
-//            .fillMaxSize()
-//            .padding(padding),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Center
-//    ) {
-//        Text("Todo를 등록해주세요.")
-//    }
-    val emptyImageUri = Uri.parse("file://dev/null")
-    var imageUri by remember { mutableStateOf(emptyImageUri) }
-    if (imageUri != emptyImageUri) {
-        Box(modifier = modifier) {
-            Image(
-                modifier = Modifier.fillMaxSize(),
-                painter = rememberImagePainter(imageUri),
-                contentDescription = "Captured image"
-            )
-            Button(
-                modifier = Modifier.align(Alignment.BottomCenter),
-                onClick = {
-                    imageUri = emptyImageUri
-                }
-            ) {
-                Text("Remove image")
-            }
-        }
-    } else {
-        CameraCapture(
-            modifier = modifier,
-            onImageFile = { file ->
-                imageUri = file.toUri()
-            }
-        )
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(padding),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("Todo를 등록해주세요.")
     }
+
 }
 
 @Composable

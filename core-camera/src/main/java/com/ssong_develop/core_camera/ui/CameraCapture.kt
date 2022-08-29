@@ -25,6 +25,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import java.io.File
 
+// TODO 코드 좀 더 봐야함
 @ExperimentalCoroutinesApi
 @Composable
 fun CameraCapture(

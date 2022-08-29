@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 
+// Local Uri를 사진으로 들고 와주는 로직 작성
 @Composable
 fun TodoPhotoAlbumScreen(
     modifier: Modifier = Modifier,
