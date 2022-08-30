@@ -10,9 +10,9 @@ interface TodoRepository {
 
     fun getTodosStream(): Flow<List<Todo>>
 
-    fun updateTodo(todo : Todo)
+    suspend fun updateTodo(todo : Todo)
 
-    fun insertTodo(todo : Todo)
+    suspend fun insertTodo(todo : Todo)
 
-    fun deleteTodo(todo : Todo)
+    suspend fun deleteTodo(todo : Todo)
 }

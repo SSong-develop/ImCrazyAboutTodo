@@ -18,9 +18,9 @@ class TodoOfflineRepository @Inject constructor(
         entities.map { entity -> entity.asExternalModel() }
     }
 
-    override fun insertTodo(todo: Todo) = todoDao.insertTodo(todo.asEntityModel())
+    override suspend fun insertTodo(todo: Todo) = todoDao.insertTodo(todo.asEntityModel())
 
-    override fun updateTodo(todo: Todo) = todoDao.updateTodo(todo.asEntityModel())
+    override suspend fun updateTodo(todo: Todo) = todoDao.updateTodo(todo.asEntityModel())
 
-    override fun deleteTodo(todo: Todo) = todoDao.deleteTodo(todo.asEntityModel())
+    override suspend fun deleteTodo(todo: Todo) = todoDao.deleteTodo(todo.asEntityModel())
 }

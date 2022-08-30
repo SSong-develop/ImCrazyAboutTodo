@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.ssong_develop.core_design.R
 import com.ssong_develop.feature_chat.navigation.ChattingDestination
 import com.ssong_develop.feature_todophotoalbum.navigation.TodoPhotoAlbumDestination
-import com.ssong_develop.feature_todo.navigation.TodoDestination
+import com.ssong_develop.feature_todo.navigation.TopLevelTodoDestination
 import com.ssong_develop.imcrazyabouttodo.navigation.TopLevelDestination
 
 @Composable
@@ -24,8 +24,8 @@ fun rememberIcatAppState(
 class IcatAppState {
     val topLevelDestinations = listOf(
         TopLevelDestination(
-            route = TodoDestination.route,
-            destination = TodoDestination.destination,
+            route = TopLevelTodoDestination.route,
+            destination = TopLevelTodoDestination.destination,
             icon = R.drawable.ic_todo,
             iconTextId = com.ssong_develop.feature_todo.R.string.todo_icon_text_id
         ),

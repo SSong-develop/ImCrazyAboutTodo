@@ -1,5 +1,7 @@
 package com.ssong_develop.imcrazyabouttodo.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -9,22 +11,23 @@ import com.ssong_develop.feature_chat.ChattingScreen
 import com.ssong_develop.feature_chat.navigation.ChattingDestination
 import com.ssong_develop.feature_todophotoalbum.TodoPhotoAlbumScreen
 import com.ssong_develop.feature_todophotoalbum.navigation.TodoPhotoAlbumDestination
-import com.ssong_develop.feature_todo.TodoScreen
-import com.ssong_develop.feature_todo.navigation.TodoDestination
+import com.ssong_develop.feature_todo.TopLevelTodoScreen
+import com.ssong_develop.feature_todo.navigation.TopLevelTodoDestination
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun IcatNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = TodoDestination.route
+    startDestination: String = TopLevelTodoDestination.route
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(route = TodoDestination.route) {
-            TodoScreen()
+        composable(route = TopLevelTodoDestination.route) {
+            TopLevelTodoScreen()
         }
         composable(route = ChattingDestination.route) {
             ChattingScreen()

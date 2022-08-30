@@ -1,16 +1,21 @@
-package com.ssong_develop.feature_todo
+package com.ssong_develop.feature_todo.subscreen.todo
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.Checkbox
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.ssong_develop.feature_todo.navigation.AddTodoDestination
 import com.ssong_develop.feature_todo.ui.TodoFloatingButton
 import com.ssong_develop.feature_todo.ui.TodoTopBar
 import com.ssong_develop.model.Todo
@@ -18,6 +23,7 @@ import com.ssong_develop.model.Todo
 @Composable
 fun TodoScreen(
     modifier: Modifier = Modifier,
+    navHostController: NavHostController,
     viewModel: ToDoViewModel = hiltViewModel()
 ) {
     // Ui Data
@@ -25,13 +31,14 @@ fun TodoScreen(
     var selectedPosition by remember { mutableStateOf(-1) }
 
     // Business Data
-    val todos by viewModel.fakeItemList.collectAsState(initial = emptyList())
+    val todos by viewModel.todos.collectAsState(initial = emptyList())
 
     Scaffold(
         modifier = modifier,
         topBar = {
             TodoTopBar(
-                modifier = modifier
+                modifier = modifier,
+                onClickAddTodo = { navHostController.navigate(AddTodoDestination.route) }
             )
         },
         floatingActionButton = {
@@ -61,7 +68,7 @@ fun TodoScreen(
 }
 
 @Composable
-fun EmptyTodoContent(
+private fun EmptyTodoContent(
     modifier: Modifier = Modifier,
     padding: PaddingValues
 ) {
@@ -78,7 +85,7 @@ fun EmptyTodoContent(
 }
 
 @Composable
-fun TodoContent(
+private fun TodoContent(
     modifier: Modifier = Modifier,
     listState: LazyListState,
     todos: List<Todo>,

@@ -3,7 +3,6 @@ package com.ssong_develop.feature_todo.ui
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -13,7 +12,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun TodoTopBar(
-    modifier : Modifier
+    modifier: Modifier,
+    onClickAddTodo: () -> Unit
 ) {
     var showMenuState by remember { mutableStateOf(false) }
 
@@ -25,23 +25,21 @@ fun TodoTopBar(
         modifier = modifier,
         navigationIcon = { /** Drawer 위치 **/ },
         actions = {
-            IconButton(onClick = {}) {
-                Icon(Icons.Default.Favorite,"Fav")
-            }
-            IconButton(onClick = { showMenuState = !showMenuState} ) {
-                Icon(Icons.Default.MoreVert,"MoreVert")
+            IconButton(onClick = { showMenuState = !showMenuState }) {
+                Icon(Icons.Default.MoreVert, "MoreVert")
             }
             DropdownMenu(
                 expanded = showMenuState,
                 onDismissRequest = { showMenuState = false },
                 modifier = modifier,
-                offset = DpOffset(0.dp,0.dp),
+                offset = DpOffset(0.dp, 0.dp),
                 content = {
-                    DropdownMenuItem(onClick = {}) {
-                        // fixme ssong-develop
-                        // 여기서 할일을 추가할 수 있도록 하겠습니다.
-                        Icon(Icons.Filled.Add,"추가")
-                    }
+                    DropdownMenuItem(
+                        onClick = { onClickAddTodo() },
+                        content = {
+                            Icon(Icons.Filled.Add, "추가")
+                        }
+                    )
                 }
             )
         },

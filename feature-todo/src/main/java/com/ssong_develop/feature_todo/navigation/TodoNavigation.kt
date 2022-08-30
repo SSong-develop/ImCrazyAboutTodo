@@ -6,4 +6,3 @@ object TodoDestination : IcatNavigationDestination {
     override val route: String = "todo_route"
     override val destination: String = "todo_destination"
 }
-

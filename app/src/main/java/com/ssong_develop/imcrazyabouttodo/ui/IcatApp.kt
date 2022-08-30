@@ -17,7 +17,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.ssong_develop.core_design.theme.ImCrazyAboutToDoTheme
 import com.ssong_develop.feature_mac_address.WifiAddressScreen
-import com.ssong_develop.feature_todo.navigation.TodoDestination
+import com.ssong_develop.feature_todo.navigation.TopLevelTodoDestination
 import com.ssong_develop.imcrazyabouttodo.MainViewModel
 import com.ssong_develop.imcrazyabouttodo.navigation.IcatBottomNavigationBar
 import com.ssong_develop.imcrazyabouttodo.navigation.IcatNavHost
@@ -54,7 +54,7 @@ fun IcatApp(
                             Box(modifier = Modifier.padding(padding)) {
                                 IcatNavHost(
                                     navController = navController,
-                                    startDestination = TodoDestination.route
+                                    startDestination = TopLevelTodoDestination.route
                                 )
                             }
                         }
