@@ -11,7 +11,7 @@ interface ChatDao {
     fun insertChat(chatEntity: ChatEntity)
 
     @Query("SELECT * FROM chatting ")
-    fun getChats() : Flow<ChatEntity>
+    fun getChats() : Flow<List<ChatEntity>>
 
     @Delete
     fun deleteChat(chatEntity: ChatEntity)

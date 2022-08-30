@@ -5,9 +5,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface ChattingRepository {
 
-    fun getChatStream() : Flow<Chat>
+    fun getChatStream() : Flow<List<Chat>>
 
-    fun insertChat(chat: Chat)
+    suspend fun insertChat(chat: Chat)
 
-    fun deleteChat(chat: Chat)
+    suspend fun deleteChat(chat: Chat)
 }

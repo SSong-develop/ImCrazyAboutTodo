@@ -1,59 +1,80 @@
 package com.ssong_develop.feature_chat
 
+import android.content.Context
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ssong_develop.model.Chat
+import kotlinx.coroutines.launch
 
-// FIXME SSONG-DEVELOP
-// 가장 최신의 채팅이 보이도록 scrollState를 최 하단으로 내리는 기능 만들어야 함
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ChattingScreen(
     modifier: Modifier = Modifier,
     viewModel: ChattingViewModel = hiltViewModel()
 ) {
-    val chatList = viewModel.fakeChatList
-
+    // Ui Data
+    val listState = rememberLazyListState()
     var chattingMessage by remember { mutableStateOf("") }
+    val context = LocalContext.current
+
+    val coroutineScope = rememberCoroutineScope()
+
+    // Data
+    val chatList by viewModel.chattingList.collectAsState(initial = emptyList())
+
     Column(
         modifier = modifier
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        LazyColumn(
-            content = {
-                items(chatList.size) { index ->
-                    Card(
-                        modifier = modifier
-                            .fillMaxSize()
-                            .padding(20.dp),
-                        shape = RoundedCornerShape(8.dp),
-                        elevation = 6.dp
-                    ) {
-                        Row(
+        if (chatList.isEmpty()) {
+            Column(
+                modifier = modifier.weight(9f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text("나와의 채팅을 시작해보세요.")
+            }
+        } else {
+            LazyColumn(
+                state = listState,
+                content = {
+                    items(chatList.size) { index ->
+                        Card(
                             modifier = modifier
-                                .fillMaxWidth()
+                                .fillMaxSize()
+                                .padding(20.dp),
+                            shape = RoundedCornerShape(4.dp),
+                            elevation = 6.dp
                         ) {
-                            Text(chatList[index].message)
+                            Row(
+                                modifier = modifier
+                                    .fillMaxWidth()
+                                    .padding(top = 4.dp, bottom = 4.dp, start = 8.dp, end = 8.dp)
+                            ) {
+                                Text(chatList[index].message)
+                            }
                         }
                     }
-                }
-            },
-            modifier = modifier.weight(9f)
-        )
+                },
+                modifier = modifier.weight(9f)
+            )
+        }
 
         Row(
             modifier = modifier
@@ -73,10 +94,13 @@ fun ChattingScreen(
             Button(
                 onClick = {
                     if (chattingMessage.isEmpty()) {
-                        Log.d("ssong-develop","비어 있습니다.")
+                        context.showToast("채팅이 비어있습니다.")
                     } else {
-                        viewModel.fakeChatList.add(Chat("6",chattingMessage,"fdjsklafd"))
+                        viewModel.saveChat(chattingMessage)
                         chattingMessage = ""
+                        coroutineScope.launch {
+                            listState.animateScrollToItem(chatList.size,0)
+                        }
                     }
                 },
                 content = {
@@ -94,3 +118,6 @@ fun ChattingScreen(
         }
     }
 }
+
+fun Context.showToast(message : String) =
+    Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
