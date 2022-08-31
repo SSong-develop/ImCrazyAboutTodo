@@ -63,13 +63,18 @@ fun TopLevelTodoScreen() {
                 }
             )
         }
-        composable(route = CameraDestination.route) {
+        composable(route = CameraDestination.route) { entry ->
             CameraCapture(
                 modifier = Modifier,
                 onImageFile = { file ->
                     val encodeFileUri = URLEncoder.encode(file.toUri().toString(),StandardCharsets.UTF_8.toString())
                     val encodeEmptyFileUri = URLEncoder.encode("/file://dev/null",StandardCharsets.UTF_8.toString())
-                    subTodoNavController.navigate(route = RemoveTodoDestination.route + "/${encodeFileUri}" + "/${encodeEmptyFileUri}")
+                    subTodoNavController.navigate(route = RemoveTodoDestination.route + "/${encodeFileUri}" + "/${encodeEmptyFileUri}") {
+                        launchSingleTop = true
+                        popUpTo(CameraDestination.route) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }

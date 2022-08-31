@@ -14,6 +14,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import com.ssong_develop.feature_todo.navigation.CameraDestination
+import com.ssong_develop.feature_todo.navigation.RemoveTodoDestination
 
 @Composable
 fun RemoveTodoScreen(
@@ -60,7 +61,11 @@ fun RemoveTodoScreen(
         Button(
             modifier = modifier.padding(bottom = 20.dp),
             onClick = {
-                navHostController.navigate(CameraDestination.route)
+                navHostController.navigate(CameraDestination.route){
+                    popUpTo(RemoveTodoDestination.route) {
+                        inclusive = true
+                    }
+                }
             },
             content = { Text("끝낸 TODO 인증하기") }
         )
