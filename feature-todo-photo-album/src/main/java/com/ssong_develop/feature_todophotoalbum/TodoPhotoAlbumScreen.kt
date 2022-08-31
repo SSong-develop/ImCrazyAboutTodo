@@ -19,9 +19,9 @@ fun TodoPhotoAlbumScreen(
     modifier: Modifier = Modifier,
     viewModel: TodoPhotoAlbumViewModel = hiltViewModel()
 ) {
-    val results by viewModel.results.collectAsState(initial = emptyList())
+    val todoPhotos by viewModel.todoPhotos.collectAsState(initial = emptyList())
 
-    if (results.isEmpty()) {
+    if (todoPhotos.isEmpty()) {
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -34,7 +34,7 @@ fun TodoPhotoAlbumScreen(
     } else {
         LazyColumn(
             content = {
-                items(results.size) { index ->
+                items(todoPhotos.size) { index ->
                     Card(
                         modifier = modifier
                             .fillMaxSize()
@@ -46,7 +46,7 @@ fun TodoPhotoAlbumScreen(
                             modifier = modifier
                                 .fillMaxWidth()
                         ) {
-                            Text(results[index].photo.toString())
+                            Text(todoPhotos[index].photo.toString())
                         }
                     }
                 }

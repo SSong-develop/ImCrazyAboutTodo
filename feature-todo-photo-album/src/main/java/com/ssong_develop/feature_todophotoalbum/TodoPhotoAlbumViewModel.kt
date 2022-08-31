@@ -10,6 +10,6 @@ class TodoPhotoAlbumViewModel @Inject constructor(
     private val todoPhotoRepository: TodoPhotoRepository
 ) : ViewModel() {
 
-    val results = todoPhotoRepository.getTodoPhotoStream()
+    val todoPhotos = todoPhotoRepository.getTodoPhotoStream()
 
 }

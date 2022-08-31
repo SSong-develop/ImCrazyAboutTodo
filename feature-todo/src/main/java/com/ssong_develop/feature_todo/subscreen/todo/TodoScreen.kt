@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.ssong_develop.feature_todo.navigation.AddTodoDestination
+import com.ssong_develop.feature_todo.navigation.RemoveTodoDestination
 import com.ssong_develop.feature_todo.ui.TodoFloatingButton
 import com.ssong_develop.feature_todo.ui.TodoTopBar
 import com.ssong_develop.model.Todo
@@ -44,7 +45,10 @@ fun TodoScreen(
         floatingActionButton = {
             TodoFloatingButton(
                 selectedPosition = selectedPosition,
-                todos = todos
+                todos = todos,
+                onClickFloatingButton = { removedTodo ->
+                    navHostController.navigate("${RemoveTodoDestination.route}/null/null")
+                }
             )
         },
         content = { paddingValues ->
@@ -59,7 +63,11 @@ fun TodoScreen(
                     todos = todos,
                     selectedPosition = selectedPosition,
                     onChangeSelectedPosition = { index ->
-                        selectedPosition = index
+                        if (selectedPosition == index) {
+                            selectedPosition = -1
+                        } else {
+                            selectedPosition = index
+                        }
                     }
                 )
             }
