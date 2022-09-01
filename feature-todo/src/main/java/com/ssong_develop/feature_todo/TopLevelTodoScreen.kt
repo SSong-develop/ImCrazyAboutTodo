@@ -57,7 +57,6 @@ fun TopLevelTodoScreen() {
             RemoveTodoScreen(
                 navHostController = subTodoNavController,
                 emptyFileUriString = emptyUriString,
-                imageFileUriString = imageUriString,
                 onClickReCaptureImage = {
 
                 }
