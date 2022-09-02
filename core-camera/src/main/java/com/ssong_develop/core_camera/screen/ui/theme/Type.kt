@@ -1,4 +1,4 @@
-package com.ssong_develop.feature_todo.subscreen.camera.ui.theme
+package com.ssong_develop.core_camera.screen.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

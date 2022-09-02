@@ -8,17 +8,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toFile
+import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
-import com.ssong_develop.feature_todo.subscreen.camera.CameraActivity
+import com.ssong_develop.core_camera.screen.CameraActivity
 import com.ssong_develop.feature_todo.subscreen.removetodo.contract.CameraActivityContract
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -26,20 +26,19 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @Composable
 fun RemoveTodoScreen(
     modifier: Modifier = Modifier,
-    navHostController: NavHostController,
-    emptyFileUriString: String?,
-    onClickReCaptureImage: () -> Unit,
+    emptyFileUriString: String = "/dev/null",
     removeTodoViewModel: RemoveTodoViewModel = hiltViewModel()
 ) {
-    val emptyFileUri = if (emptyFileUriString != null) Uri.parse(emptyFileUriString) else null
-    var imageFileUri = remember { mutableStateOf(emptyFileUri) }
+    val emptyFileUri by remember { mutableStateOf(Uri.parse(emptyFileUriString))}
+    var imageFileUri by remember { mutableStateOf(emptyFileUri) }
+
     val context = LocalContext.current
+
     val cameraLauncher = rememberLauncherForActivityResult(
         contract = CameraActivityContract(),
         onResult = { imageUri ->
-            if (imageUri != null) {
-                Log.d("ssong-develop","${imageUri}")
-                imageFileUri.value = Uri.parse(imageUri)
+            imageUri?.let {
+                imageFileUri = Uri.parse(it)
             }
         }
     )
@@ -49,26 +48,25 @@ fun RemoveTodoScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if (emptyFileUri != null) {
-            if (imageFileUri != emptyFileUri) {
-                Column(modifier = modifier) {
-                    Image(
-                        modifier = modifier
-                            .width(300.dp)
-                            .height(300.dp),
-                        painter = rememberImagePainter(imageFileUri),
-                        contentDescription = "Captured Image"
-                    )
-                    Button(
-                        modifier = modifier,
-                        onClick = {
-                            onClickReCaptureImage()
-                        },
-                        content = {
-                            Text("캡처 이미지 삭제")
-                        }
-                    )
-                }
+        if (imageFileUri != emptyFileUri) {
+            Column(modifier = modifier) {
+                Image(
+                    modifier = modifier
+                        .width(300.dp)
+                        .height(300.dp),
+                    painter = rememberImagePainter(imageFileUri),
+                    contentDescription = "Captured Image"
+                )
+                Button(
+                    modifier = modifier,
+                    onClick = {
+                        imageFileUri.toFile().delete()
+                        imageFileUri = emptyFileUri
+                    },
+                    content = {
+                        Text("캡처 이미지 삭제")
+                    }
+                )
             }
         }
 

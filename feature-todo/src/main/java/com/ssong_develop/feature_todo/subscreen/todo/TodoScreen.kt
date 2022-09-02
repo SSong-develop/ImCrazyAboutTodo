@@ -47,7 +47,7 @@ fun TodoScreen(
                 selectedPosition = selectedPosition,
                 todos = todos,
                 onClickFloatingButton = { removedTodo ->
-                    navHostController.navigate("${RemoveTodoDestination.route}/null/null")
+                    navHostController.navigate(route = RemoveTodoDestination.route)
                 }
             )
         },

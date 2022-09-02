@@ -1,4 +1,4 @@
-package com.ssong_develop.feature_todo.subscreen.camera
+package com.ssong_develop.core_camera.screen
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,11 +10,10 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.net.toUri
+import com.ssong_develop.core_camera.screen.ui.theme.ImCrazyAboutToDoTheme
 import com.ssong_develop.core_camera.ui.CameraCapture
-import com.ssong_develop.feature_todo.subscreen.camera.ui.theme.ImCrazyAboutToDoTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi

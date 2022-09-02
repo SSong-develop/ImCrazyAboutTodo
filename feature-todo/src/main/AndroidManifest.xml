@@ -2,12 +2,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ssong_develop.feature_todo">
 
-    <application>
-        <activity
-            android:name=".subscreen.camera.CameraActivity"
-            android:exported="false"
-            android:label="@string/title_activity_camera"
-            android:theme="@style/Theme.ImCrazyAboutToDo" />
-    </application>
-
 </manifest>

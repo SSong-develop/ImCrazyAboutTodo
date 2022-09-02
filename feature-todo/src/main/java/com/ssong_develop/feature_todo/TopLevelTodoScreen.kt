@@ -38,44 +38,8 @@ fun TopLevelTodoScreen() {
         composable(route = AddTodoDestination.route) {
             AddTodoScreen(navHostController = subTodoNavController)
         }
-        composable(
-            route = "${RemoveTodoDestination.route}/{imageUri}/{emptyUri}" ,
-            arguments = listOf(
-                navArgument("imageUri") {
-                    type = NavType.StringType
-                    nullable = true
-                },
-                navArgument("emptyUri") {
-                    type = NavType.StringType
-                    nullable = true
-                }
-            )
-        ) { entry ->
-            val emptyUriString = entry.arguments?.getString("emptyUri")
-            val imageUriString = entry.arguments?.getString("imageUri")
-
-            RemoveTodoScreen(
-                navHostController = subTodoNavController,
-                emptyFileUriString = emptyUriString,
-                onClickReCaptureImage = {
-
-                }
-            )
-        }
-        composable(route = CameraDestination.route) { entry ->
-            CameraCapture(
-                modifier = Modifier,
-                onImageFile = { file ->
-                    val encodeFileUri = URLEncoder.encode(file.toUri().toString(),StandardCharsets.UTF_8.toString())
-                    val encodeEmptyFileUri = URLEncoder.encode("/file://dev/null",StandardCharsets.UTF_8.toString())
-                    subTodoNavController.navigate(route = RemoveTodoDestination.route + "/${encodeFileUri}" + "/${encodeEmptyFileUri}") {
-                        launchSingleTop = true
-                        popUpTo(CameraDestination.route) {
-                            inclusive = true
-                        }
-                    }
-                }
-            )
+        composable(route = RemoveTodoDestination.route) {
+            RemoveTodoScreen()
         }
     }
 }
