@@ -47,6 +47,7 @@ fun TodoScreen(
                 selectedPosition = selectedPosition,
                 todos = todos,
                 onClickFloatingButton = { removedTodo ->
+                    // TODO removedTodo 데이터 보내줘야 합니다.
                     navHostController.navigate(route = RemoveTodoDestination.route)
                 }
             )

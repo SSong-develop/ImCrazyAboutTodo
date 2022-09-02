@@ -1,5 +1,6 @@
 package com.ssong_develop.feature_todo.ui
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -38,6 +39,10 @@ fun TodoTopBar(
                         onClick = { onClickAddTodo() },
                         content = {
                             Icon(Icons.Filled.Add, "추가")
+                            Text(
+                                text = "할일 추가",
+                                modifier = modifier.padding(start = 6.dp)
+                            )
                         }
                     )
                 }

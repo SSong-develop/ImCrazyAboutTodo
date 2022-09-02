@@ -1,9 +1,12 @@
 package com.ssong_develop.feature_todo.subscreen.removetodo
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Log
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -14,14 +17,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toFile
-import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import com.ssong_develop.core_camera.screen.CameraActivity
 import com.ssong_develop.feature_todo.subscreen.removetodo.contract.CameraActivityContract
+import com.ssong_develop.feature_todo.ui.showToast
+import com.ssong_develop.feature_todo.util.calculateInSampleSize
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import java.io.ByteArrayOutputStream
 
+@RequiresApi(Build.VERSION_CODES.O)
 @ExperimentalCoroutinesApi
 @Composable
 fun RemoveTodoScreen(
@@ -74,9 +79,31 @@ fun RemoveTodoScreen(
         Button(
             modifier = modifier.padding(bottom = 20.dp),
             onClick = {
-                cameraLauncher.launch(Intent(context,CameraActivity::class.java))
+                if (imageFileUri != emptyFileUri) {
+                    val removeTodoPhotoByteArray = imageFileUri.toFile().readBytes()
+                    val byteArrayStream = ByteArrayOutputStream()
+                    val photoBitmap = BitmapFactory.decodeByteArray(removeTodoPhotoByteArray,0,removeTodoPhotoByteArray.size)
+                    photoBitmap.compress(Bitmap.CompressFormat.JPEG,10,byteArrayStream)
+                    removeTodoViewModel.removeTodo(
+                        byteArrayStream.toByteArray(),
+                        successClosure = {
+                            context.showToast("성공")
+                        },
+                        failedClosure = {
+                            context.showToast("실패")
+                        }
+                    )
+                } else {
+                    cameraLauncher.launch(Intent(context,CameraActivity::class.java))
+                }
             },
-            content = { Text("끝낸 TODO 인증하기") }
+            content = {
+                if (imageFileUri != emptyFileUri) {
+                    Text("할일 삭제")
+                } else {
+                    Text("인증하기")
+                }
+            }
         )
     }
 }
