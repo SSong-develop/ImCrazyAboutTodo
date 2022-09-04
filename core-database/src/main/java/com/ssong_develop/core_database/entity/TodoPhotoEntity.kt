@@ -10,6 +10,7 @@ import com.ssong_develop.model.TodoPhoto
 data class TodoPhotoEntity(
     @PrimaryKey
     val id: String,
+    val uriString: String,
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     val photo: ByteArray,
     val photoDescription: String,
@@ -22,6 +23,7 @@ data class TodoPhotoEntity(
         other as TodoPhotoEntity
 
         if (id != other.id) return false
+        if (uriString != other.uriString) return false
         if (!photo.contentEquals(other.photo)) return false
         if (photoDescription != other.photoDescription) return false
         if (photoCreatedAt != other.photoCreatedAt) return false
@@ -31,6 +33,7 @@ data class TodoPhotoEntity(
 
     override fun hashCode(): Int {
         var result = id.hashCode()
+        result = 31 * result + uriString.hashCode()
         result = 31 * result + photo.contentHashCode()
         result = 31 * result + photoDescription.hashCode()
         result = 31 * result + photoCreatedAt.hashCode()
@@ -40,6 +43,7 @@ data class TodoPhotoEntity(
 
 fun TodoPhotoEntity.asExternalModel() = TodoPhoto(
     id = id,
+    uriString = uriString,
     photo = photo,
     photoDescription = photoDescription,
     photoCreatedAt = photoCreatedAt

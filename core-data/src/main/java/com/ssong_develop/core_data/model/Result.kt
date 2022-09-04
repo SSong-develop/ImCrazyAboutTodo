@@ -5,6 +5,7 @@ import com.ssong_develop.model.TodoPhoto
 
 fun TodoPhoto.asEntityModel() = TodoPhotoEntity(
     id = id,
+    uriString = uriString,
     photo = photo,
     photoDescription = photoDescription,
     photoCreatedAt = photoCreatedAt

@@ -21,12 +21,15 @@ class TodoPhotoAlbumViewModel @Inject constructor(
     @DefaultDispatcher private val defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
+    // imageCache를 사용하는 것은 어떤가요???
     val todoPhotos = todoPhotoRepository.getTodoPhotoStream()
 
     val todoBitmapFlow = todoPhotos.map {
         it.map {
-            BitmapFactory.decodeByteArray(it.photo,0,it.photo.size).asImageBitmap()
+            if (ImageCacheManager.getImage(it.uriString) == null) {
+                ImageCacheManager.saveCache(it.uriString,BitmapFactory.decodeByteArray(it.photo,0,it.photo.size).asImageBitmap())
+            }
+            ImageCacheManager.getImage(it.uriString)
         }
-    }.flowOn(defaultDispatcher)
-
+    }
 }

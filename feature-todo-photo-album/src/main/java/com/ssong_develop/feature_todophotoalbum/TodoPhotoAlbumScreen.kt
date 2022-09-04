@@ -14,8 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.ImageLoader
+import coil.compose.AsyncImage
 
 // Local Uri를 사진으로 들고 와주는 로직 작성
 @Composable
@@ -53,15 +56,16 @@ fun TodoPhotoAlbumScreen(
                             modifier = modifier
                                 .wrapContentSize()
                         ) {
-                            Image(
-                                bitmap = todoImageBitmaps[index],
-                                contentDescription = "hello world!"
-                            )
+                            todoImageBitmaps[index]?.let {
+                                Image(
+                                    bitmap = it,
+                                    contentDescription = "hello world!",
+                                )
+                            }
                         }
                     }
                 }
             }
         )
     }
-
 }

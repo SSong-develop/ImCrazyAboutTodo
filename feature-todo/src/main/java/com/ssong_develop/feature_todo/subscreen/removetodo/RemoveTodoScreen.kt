@@ -80,12 +80,9 @@ fun RemoveTodoScreen(
             modifier = modifier.padding(bottom = 20.dp),
             onClick = {
                 if (imageFileUri != emptyFileUri) {
-                    val removeTodoPhotoByteArray = imageFileUri.toFile().readBytes()
-                    val byteArrayStream = ByteArrayOutputStream()
-                    val photoBitmap = BitmapFactory.decodeByteArray(removeTodoPhotoByteArray,0,removeTodoPhotoByteArray.size)
-                    photoBitmap.compress(Bitmap.CompressFormat.JPEG,10,byteArrayStream)
                     removeTodoViewModel.removeTodo(
-                        byteArrayStream.toByteArray(),
+                        imageFileUri.toString(),
+                        imageFileUri.toFile().readBytes(),
                         successClosure = {
                             context.showToast("성공")
                         },

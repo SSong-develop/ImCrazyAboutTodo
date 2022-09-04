@@ -17,6 +17,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.ssong_develop.feature_todo.navigation.AddTodoDestination
 import com.ssong_develop.feature_todo.navigation.RemoveTodoDestination
+import com.ssong_develop.feature_todo.state.isScrollingUp
 import com.ssong_develop.feature_todo.ui.TodoFloatingButton
 import com.ssong_develop.feature_todo.ui.TodoTopBar
 import com.ssong_develop.model.Todo
@@ -30,6 +31,7 @@ fun TodoScreen(
     // Ui Data
     val listState = rememberLazyListState()
     var selectedPosition by remember { mutableStateOf(-1) }
+    var topBarVisibility by remember { mutableStateOf(false) }
 
     // Business Data
     val todos by viewModel.todos.collectAsState(initial = emptyList())
@@ -90,7 +92,6 @@ private fun EmptyTodoContent(
     ) {
         Text("Todo를 등록해주세요.")
     }
-
 }
 
 @Composable
@@ -126,6 +127,7 @@ private fun TodoContent(
                     }
                 }
             }
-        }
+        },
+        modifier = modifier
     )
 }
