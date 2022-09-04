@@ -9,9 +9,9 @@ interface TodoPhotoRepository {
 
     fun getTodoPhotoStream(): Flow<List<TodoPhoto>>
 
-    fun insertTodoPhoto(todoPhoto: TodoPhoto)
+    suspend fun insertTodoPhoto(todoPhoto: TodoPhoto)
 
-    fun deleteTodoPhoto(todoPhoto: TodoPhoto)
+    suspend fun deleteTodoPhoto(todoPhoto: TodoPhoto)
 
-    fun updateTodoPhoto(todoPhoto: TodoPhoto)
+    suspend fun updateTodoPhoto(todoPhoto: TodoPhoto)
 }

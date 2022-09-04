@@ -18,9 +18,9 @@ class TodoPhotoOfflineRepository @Inject constructor(
         entities.map { entity -> entity.asExternalModel() }
     }
 
-    override fun insertTodoPhoto(todoPhoto: TodoPhoto) = todoPhotoDao.insertTodoPhoto(todoPhoto.asEntityModel())
+    override suspend fun insertTodoPhoto(todoPhoto: TodoPhoto) = todoPhotoDao.insertTodoPhoto(todoPhoto.asEntityModel())
 
-    override fun deleteTodoPhoto(todoPhoto: TodoPhoto) = todoPhotoDao.deleteTodoPhoto(todoPhoto.asEntityModel())
+    override suspend fun deleteTodoPhoto(todoPhoto: TodoPhoto) = todoPhotoDao.deleteTodoPhoto(todoPhoto.asEntityModel())
 
-    override fun updateTodoPhoto(todoPhoto: TodoPhoto) = todoPhotoDao.updateTodoPhoto(todoPhoto.asEntityModel())
+    override suspend fun updateTodoPhoto(todoPhoto: TodoPhoto) = todoPhotoDao.updateTodoPhoto(todoPhoto.asEntityModel())
 }

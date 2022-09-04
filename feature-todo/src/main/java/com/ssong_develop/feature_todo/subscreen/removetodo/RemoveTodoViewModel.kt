@@ -73,7 +73,7 @@ class RemoveTodoViewModel @Inject constructor(
     private fun compressByteArray(byteArray: ByteArray) : ByteArray{
         val baos = ByteArrayOutputStream()
         BitmapFactory.decodeByteArray(byteArray,0,byteArray.size).apply {
-            compress(Bitmap.CompressFormat.JPEG,50,baos)
+            compress(Bitmap.CompressFormat.JPEG,1,baos)
         }
         return baos.toByteArray()
     }
