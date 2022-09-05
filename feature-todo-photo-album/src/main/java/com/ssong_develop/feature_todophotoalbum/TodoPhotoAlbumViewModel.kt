@@ -26,13 +26,4 @@ class TodoPhotoAlbumViewModel @Inject constructor(
 ) : ViewModel() {
 
     val todoPhotos = todoPhotoRepository.getTodoPhotoStream()
-
-    val todoBitmapFlow = todoPhotos.map {
-        it.map {
-            if (ImageCacheManager.getImage(it.uriString) == null) {
-                ImageCacheManager.saveCache(it.uriString,BitmapFactory.decodeByteArray(it.photo,0,it.photo.size).asImageBitmap())
-            }
-            ImageCacheManager.getImage(it.uriString)
-        }
-    }
 }
